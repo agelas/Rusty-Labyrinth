@@ -1,4 +1,5 @@
 mod parts;
+mod entities;
 
 use crate::parts::position::Position;
 fn main() {

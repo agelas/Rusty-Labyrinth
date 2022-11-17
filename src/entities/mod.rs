@@ -13,6 +13,10 @@ pub mod entities{
 
     impl Entity {
 
+        pub fn new() -> Entity {
+            Entity{glyph: String::from(""), properties: String::from(""), position: Position::new(0, 0)}
+        }
+
         pub fn set_glyph(& mut self, glyph: String) {
             self.glyph = glyph;
         }
@@ -40,5 +44,26 @@ pub mod entities{
         pub fn get_position(&self) -> &Position {
             &self.position // I guess we "borrow" the Entity's Position struct??
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::entities::Entity;
+
+    #[test]
+    fn test_creation() {
+        let mut test_e: Entity = Entity::new();
+        test_e.set_glyph(String::from('m'));
+        test_e.set_properties(String::from('s'));
+        assert_eq!(test_e.get_glyph(), 'm'.to_string());
+        assert_eq!(test_e.get_properties(), 's'.to_string());
+    }
+
+    #[test]
+    fn test_properties() {
+        let mut test_e: Entity = Entity::new();
+        test_e.set_properties("smh".to_string());
+        assert_eq!(test_e.has_property("m".to_string()), true);
     }
 }

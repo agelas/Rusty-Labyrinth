@@ -3,11 +3,12 @@ pub mod position {
         UP, DOWN, LEFT, RIGHT,
     }
 
+    #[derive(Debug)]
     pub struct Position {
         x: i8,
         y: i8,
     }
-
+    
     impl Position {
 
         pub fn new(x: i8, y:i8) -> Position { //so this is how we do constructors?
@@ -56,6 +57,13 @@ pub mod position {
             } else {
                 false
             }
+        }
+    }
+
+    impl PartialEq for Position {
+        // Override equality
+        fn eq(&self, other: &Self) -> bool {
+            self.x == other.x && self.y == other.y
         }
     }
 }

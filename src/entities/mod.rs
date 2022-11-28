@@ -49,6 +49,8 @@ pub mod entities{
 
 #[cfg(test)]
 mod tests {
+    use crate::parts::position::Position;
+
     use super::entities::Entity;
 
     #[test]
@@ -65,5 +67,14 @@ mod tests {
         let mut test_e: Entity = Entity::new();
         test_e.set_properties("smh".to_string());
         assert_eq!(test_e.has_property("m".to_string()), true);
+    }
+
+    #[test]
+    fn test_position() {
+        let p: Position = Position::new(1, 1);
+        let p_test: Position = Position::new(1, 1);
+        let mut test_e: Entity = Entity::new();
+        test_e.set_position(p);
+        assert_eq!(test_e.get_position(), &p_test);
     }
 }

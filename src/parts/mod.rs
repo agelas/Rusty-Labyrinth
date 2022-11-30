@@ -1,3 +1,5 @@
+mod tiles;
+
 pub mod position {
     pub enum Direction {
         UP, DOWN, LEFT, RIGHT,

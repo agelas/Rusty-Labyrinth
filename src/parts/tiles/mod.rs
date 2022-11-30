@@ -1,11 +1,11 @@
 pub mod tiles {
-    enum MoveResult {
+    pub enum MoveResult {
         ALLOW,
         BLOCK,
     }
 
     pub trait Tile { // The 'interface' so to speak
-        fn check_move_onto(&self, entity: Entity, fromPosition: Position, tilePosition: Position) -> MoveResult;
+        fn check_move_onto(&self) -> MoveResult;
         fn is_goal(&self) -> bool;
         fn get_glyph(&self) -> String;
     }    
@@ -15,7 +15,7 @@ pub mod tiles {
     pub struct Goal {}
 
     impl Tile for Wall {
-        fn check_move_onto(&self, entity: Entity, fromPosition: Position, tilePosition: Position) -> MoveResult {
+        fn check_move_onto(&self) -> MoveResult {
             MoveResult::BLOCK
         }
 
@@ -24,12 +24,12 @@ pub mod tiles {
         }
 
         fn get_glyph(&self) -> String {
-            std::String('#');
+            String::from("#")
         }
     }
 
     impl Tile for Floor {
-        fn check_move_onto(&self, entity: Entity, fromPosition: Position, tilePosition: Position) -> MoveResult {
+        fn check_move_onto(&self) -> MoveResult {
             MoveResult::ALLOW
         }
 
@@ -38,12 +38,12 @@ pub mod tiles {
         }
 
         fn get_glyph(&self) -> String {
-            std::String('.');
+            String::from(".")
         }
     }
 
-    impl Goal for Floor {
-        fn check_move_onto(&self, entity: Entity, fromPosition: Position, tilePosition: Position) -> MoveResult {
+    impl Tile for Goal {
+        fn check_move_onto(&self) -> MoveResult {
             MoveResult::ALLOW
         }
 
@@ -52,7 +52,7 @@ pub mod tiles {
         }
 
         fn get_glyph(&self) -> String {
-            std::String('<');
+            String::from("<")
         }
     }
 

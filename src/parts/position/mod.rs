@@ -74,7 +74,6 @@ impl PartialEq for Position {
 mod tests {
     use crate::parts::position::{Position, Direction};
 
-
     #[test]
     fn test_new() {
         let test_p: Position = Position::new(1, 1);

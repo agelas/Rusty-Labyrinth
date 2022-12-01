@@ -4,7 +4,7 @@ pub enum MoveResult {
     BLOCK,
 }
 
-trait Tile { // The 'interface' so to speak
+pub trait Tile { // The 'interface' so to speak
     fn check_move_onto(&self) -> MoveResult;
     fn is_goal(&self) -> bool;
     fn get_glyph(&self) -> String;

@@ -21,7 +21,7 @@ mod maze {
         }
 
         pub fn in_bounds(&self, position: &Position) -> bool {
-            position.in_bounds(self.width, self.height)
+            position.in_bounds(&self.width, &self.height)
         }
 
         pub fn set_tile(& mut self, position: &Position, tile: Box<dyn Tile>) {

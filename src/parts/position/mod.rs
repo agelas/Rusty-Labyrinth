@@ -50,8 +50,8 @@ impl Position {
         x_diff + y_diff
     }
 
-    pub fn in_bounds(&self, width: i8, height: i8) -> bool {
-        if self.x >= 0 && self.x < width && self.y >= 0 && self.y < height {
+    pub fn in_bounds(&self, width: &i8, height: &i8) -> bool {
+        if self.x >= 0 && self.x < *width && self.y >= 0 && self.y < *height {
             true
         } else {
             false
@@ -109,7 +109,7 @@ mod tests {
     #[test]
     fn test_in_bounds() {
         let test_p: Position = Position::new(2, 2);
-        let result: bool = test_p.in_bounds(3, 3);
+        let result: bool = test_p.in_bounds(&3, &3);
         assert_eq!(result, true);
     }
 }

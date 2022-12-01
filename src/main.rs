@@ -1,9 +1,12 @@
+use parts::maze::Maze;
 use crate::parts::position::Position;
+use std::env;
 
 mod parts;
 mod entities;
 
 fn main() {
-    let p = Position::new(0, 0);
-    println!("x: {}, y: {}", p.get_x(), p.get_y());
+    let args: Vec<String> = env::args().collect();
+    let file_path = &args[1];
+    Maze::read(file_path)
 }

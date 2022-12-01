@@ -49,7 +49,7 @@ pub mod entities{
 
 #[cfg(test)]
 mod tests {
-    use crate::parts::position::Position;
+    use crate::Position;
 
     use super::entities::Entity;
 

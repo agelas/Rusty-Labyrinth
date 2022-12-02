@@ -3,7 +3,7 @@ pub(crate) mod position;
 
 pub mod maze {
     use super::{tiles::{Tile, Floor}, position::Position};
-    use std::fs;
+    use std::{fs, io::BufReader};
 
     pub struct Maze {
         height: i8,
@@ -44,7 +44,24 @@ pub mod maze {
 
         pub fn read(file_path: &String) {
             let file_contents = fs::read_to_string(file_path).expect("Should read file");
-            println!("{}", file_contents);
+            let mut lines = file_contents.lines();
+
+            let mut maze_height: i8 = 0;
+            let mut maze_width: i8 =  0;
+            let dimensions_line = lines.next();
+            let dimensions = dimensions_line.unwrap();
+            let mut dimensions = dimensions.split_whitespace().map(|s| s.parse::<i8>());
+            match (dimensions.next(), dimensions.next()) { // How did Rust manage to make I/O worse than C??
+                (Some(Ok(height)), Some(Ok(width))) => {
+                    maze_height = height;
+                    maze_width = width;
+                }
+                _ => {}
+            }
+            
+
+            println!("{}", maze_height);
+            println!("{}", maze_width);
         }
 
         pub fn print() {

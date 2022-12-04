@@ -41,11 +41,11 @@ pub mod maze {
         }
 
         pub fn get_tile(&self, position: &Position) -> &Box<dyn Tile> {
-            let index = position.get_y() * self.width + position.get_x();
+            let index = i16::from(position.get_y()) * i16::from(self.width) + i16::from(position.get_x());
             &self.grid[index as usize]
         }
 
-        pub fn read(file_path: &String) {
+        pub fn read(file_path: &String) -> Maze{
             /* This function is so ugly */
             let file_contents = fs::read_to_string(file_path).expect("Should read file");
             let mut lines = file_contents.lines();
@@ -81,11 +81,18 @@ pub mod maze {
                     new_maze.set_tile(&position, tile);
                 } 
             }
-            
+            new_maze
         }
 
-        pub fn print() {
-            todo!();
+        pub fn print(&self) {
+            for i in 0..self.get_height() {
+                for j in 0..self.get_width() {
+                    let p: Position = Position::new(j, i);
+                    let t: &Box<dyn Tile> = self.get_tile(&p);
+                    print!("{}", t.get_glyph());
+                }
+                println!();
+            }
         }
     }
 }

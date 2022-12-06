@@ -2,10 +2,10 @@ mod tiles;
 pub(crate) mod position;
 
 pub mod maze {
-    use crate::parts::{position, tiles::{Wall, Goal}};
+    use crate::parts::{tiles::{Wall, Goal}};
 
     use super::{tiles::{Tile, Floor}, position::Position};
-    use std::{fs, io::BufReader};
+    use std::{fs};
 
     pub struct Maze {
         height: i8,

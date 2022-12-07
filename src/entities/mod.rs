@@ -1,5 +1,6 @@
 pub mod entities{
     use crate::parts::position::Position;
+    use crate::parts::tiles;
 
     /*
         An Entity is meant to represent a generic game
@@ -9,6 +10,12 @@ pub mod entities{
         glyph: String,
         properties: String,
         position: Position,
+    }
+
+    pub trait EntityController {
+        fn get_move_direction() -> MoveResult;
+        fn is_user() -> bool;
+
     }
 
     impl Entity {

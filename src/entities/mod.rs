@@ -1,6 +1,6 @@
 pub mod entities{
     use crate::parts::position::Position;
-    use crate::parts::tiles;
+    use crate::parts::tiles::MoveResult;
 
     /*
         An Entity is meant to represent a generic game

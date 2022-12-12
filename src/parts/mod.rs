@@ -1,4 +1,4 @@
-mod tiles;
+pub(crate) mod tiles;
 pub(crate) mod position;
 
 pub mod maze {

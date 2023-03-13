@@ -96,3 +96,36 @@ pub mod maze {
         }
     }
 }
+
+#[cfg(test)]
+
+mod tests {
+    use super::maze::Maze;
+    use crate::parts::position::Position;
+
+    #[test]
+    fn test_new_maze() {
+        let file_path = "maze1.txt".to_string();
+        let t_maze: Maze = Maze::read(&file_path);
+        assert_eq!(t_maze.get_height(), 10);
+        assert_eq!(t_maze.get_width(), 20);
+    }
+
+    #[test]
+    fn test_in_bounds() {
+        let file_path = "maze1.txt".to_string();
+        let t_maze: Maze = Maze::read(&file_path);
+
+        let test_p: Position = Position::new(1, 1);
+        assert_eq!(t_maze.in_bounds(&test_p), true);
+    }
+
+    #[test]
+    fn test_not_in_bounds() {
+        let file_path = "maze1.txt".to_string();
+        let t_maze: Maze = Maze::read(&file_path);
+
+        let test_p: Position = Position::new(21, 11);
+        assert_eq!(t_maze.in_bounds(&test_p), false);
+    }
+}

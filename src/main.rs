@@ -1,5 +1,4 @@
 use parts::maze::Maze;
-use crate::parts::position::Position;
 use std::env;
 
 mod parts;

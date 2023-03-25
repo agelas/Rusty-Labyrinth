@@ -1,5 +1,6 @@
 use crate::parts::position::Position;
 
+#[derive(Debug, PartialEq)]
 pub struct Entity {
     glyph: String,
     properties: String,

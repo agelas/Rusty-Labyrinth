@@ -1,3 +1,5 @@
+pub mod ui;
+
 pub mod game {
     use crate::{parts::{maze::Maze, position::Position}, entities::entity::Entity};
 

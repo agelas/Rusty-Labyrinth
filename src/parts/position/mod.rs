@@ -1,5 +1,5 @@
 pub enum Direction {
-    UP, DOWN, LEFT, RIGHT,
+    UP, DOWN, LEFT, RIGHT, NONE
 }
 
 #[derive(Debug)]
@@ -37,6 +37,9 @@ impl Position {
             }
             Direction::RIGHT => {
                 self.x = self.x + 1;
+            }
+            Direction::NONE => {
+                // do nothing
             }
         }
     }
